@@ -28,7 +28,7 @@ BLEScan* pBLEScan;
 //Blue:   A495BB60C5B14B44B5121370F02D74DE
 //Yellow: A495BB70C5B14B44B5121370F02D74DE
 //Pink:   A495BB80C5B14B44B5121370F02D74DE
-String tiltUUID = "a495bb70c5b14b44b5121370f02d74de"; // Yellow
+//String tiltUUID = "a495bb70c5b14b44b5121370f02d74de"; // Yellow
 String tiltUUID01 = "a495bb";
 String tiltUUID02 = "0c5b14b44b5121370f02d74de";
 //String tColor = "";
@@ -39,6 +39,8 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
     int ourIndex01 = thisString.indexOf(tiltUUID01);
     int ourIndex02 = thisString.indexOf(tiltUUID02);
     if (ourIndex01 >= 1 && ourIndex02 >= 8) {
+      // Utilizing the UUID we can see what color we are accessing
+      String colorCode = thisString.substring(ourIndex01 + 6, ourIndex02);
       int lastChar = ourIndex01 + 32;
       String beerTemp = thisString.substring(lastChar, lastChar + 4);
       String beerGrav = thisString.substring(lastChar + 4, lastChar + 8);
@@ -55,6 +57,34 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
       u8g2.drawUTF8(72, 15, DEGREE_SYMBOL);
       u8g2.drawStr(82, 15, "F");
       u8g2.drawStr(0, 40, goodGrav.c_str());
+      switch(colorCode.toInt()) {
+        case 1:
+          u8g2.drawStr(0, 60, "Red");
+          break;
+        case 2:
+          u8g2.drawStr(0, 60, "Green");
+          break;
+        case 3:
+          u8g2.drawStr(0, 60, "Black");
+          break;
+        case 4:
+          u8g2.drawStr(0, 60, "Purple");
+          break;
+        case 5:
+          u8g2.drawStr(0, 60, "Orange");
+          break;
+        case 6:
+          u8g2.drawStr(0, 60, "Blue");
+          break;
+        case 7:
+          u8g2.drawStr(0, 60, "Yellow");
+          break;
+        case 8:
+          u8g2.drawStr(0, 60, "Pink");
+          break;
+        default:
+          u8g2.drawStr(0, 60, "Unknown");
+      }
       u8g2.sendBuffer();
     }
   }
