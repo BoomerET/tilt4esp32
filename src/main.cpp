@@ -52,38 +52,38 @@ class MyAdvertisedDeviceCallbacks: public BLEAdvertisedDeviceCallbacks {
       String goodGrav = "Gravity: " + String(realGrav, 3);
       u8g2.clearBuffer();          // clear the internal memory
       u8g2.setFont(u8g2_font_pxplusibmvga9_tf);
-      u8g2.drawStr(0, 15, oledTemp.c_str());
+      u8g2.drawStr(0, 35, oledTemp.c_str());
 
-      u8g2.drawUTF8(72, 15, DEGREE_SYMBOL);
-      u8g2.drawStr(82, 15, "F");
-      u8g2.drawStr(0, 40, goodGrav.c_str());
+      u8g2.drawUTF8(72, 35, DEGREE_SYMBOL);
+      u8g2.drawStr(82, 35, "F");
+      u8g2.drawStr(0, 55, goodGrav.c_str());
       switch(colorCode.toInt()) {
         case 1:
-          u8g2.drawStr(0, 60, "Red");
+          u8g2.drawStr(0, 15, "Red");
           break;
         case 2:
-          u8g2.drawStr(0, 60, "Green");
+          u8g2.drawStr(0, 15, "Green");
           break;
         case 3:
-          u8g2.drawStr(0, 60, "Black");
+          u8g2.drawStr(0, 15, "Black");
           break;
         case 4:
-          u8g2.drawStr(0, 60, "Purple");
+          u8g2.drawStr(0, 15, "Purple");
           break;
         case 5:
-          u8g2.drawStr(0, 60, "Orange");
+          u8g2.drawStr(0, 15, "Orange");
           break;
         case 6:
-          u8g2.drawStr(0, 60, "Blue");
+          u8g2.drawStr(0, 15, "Blue");
           break;
         case 7:
-          u8g2.drawStr(0, 60, "Yellow");
+          u8g2.drawStr(0, 15, "Yellow");
           break;
         case 8:
-          u8g2.drawStr(0, 60, "Pink");
+          u8g2.drawStr(0, 15, "Pink");
           break;
         default:
-          u8g2.drawStr(0, 60, "Unknown");
+          u8g2.drawStr(0, 15, "Unknown");
       }
       u8g2.sendBuffer();
     }
