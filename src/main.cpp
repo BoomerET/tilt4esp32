@@ -11,9 +11,9 @@
 #include <Arduino.h>
 #include <U8g2lib.h>
 #include <Wire.h>
-#include <WiFi.h>
-#include <WiFiClient.h>
-#include <WiFiAP.h>
+//#include <WiFi.h>
+//#include <WiFiClient.h>
+//#include <WiFiAP.h>
 
 // This is to display the degree symbol.
 const char DEGREE_SYMBOL[] = { 0xB0, '\0' };
@@ -24,9 +24,9 @@ U8G2_SSD1306_128X64_NONAME_F_SW_I2C u8g2(U8G2_R0, /* clock=*/ 4, /* data=*/ 5 , 
 int scanTime = 15; //In seconds
 BLEScan* pBLEScan;
 
-const char *ssid = "tilt4esp";
-const char *password = "tilt1234";
-WiFiServer server(80);
+//const char *ssid = "tilt4esp";
+//const char *password = "tilt1234";
+//WiFiServer server(80);
 
 //Red:    A495BB10C5B14B44B5121370F02D74DE
 //Green:  A495BB20C5B14B44B5121370F02D74DE
@@ -117,8 +117,8 @@ void setup() {
   //Serial.println();
   //Serial.println("Configuring access point...");
   
-  WiFi.softAP(ssid);
-  IPAddress myIP = WiFi.softAPIP();
+  //WiFi.softAP(ssid);
+  //IPAddress myIP = WiFi.softAPIP();
   //Serial.print("AP IP address: ");
   //Serial.println(myIP);
   //server.begin();
@@ -135,7 +135,7 @@ void setup() {
 }
 
 void loop() {
-  WiFiClient client = server.available();   // listen for incoming clients
+  //WiFiClient client = server.available();   // listen for incoming clients
   BLEScanResults foundDevices = pBLEScan->start(scanTime, false);
   pBLEScan->clearResults();
   delay(2000);
